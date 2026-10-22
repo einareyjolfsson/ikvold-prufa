@@ -6,8 +6,8 @@
 <title>Í kvöld</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0b10;--card:#14151f;--ink:#f3f4f8;--mute:#8b8fa8;--amber:#9a7dff;--rose:#ff5c8a;--line:#262839;--on:#0a0b10;--hh:#3de0ff;--glow:#3a2a8a66;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f4f5fa;--card:#fff;--ink:#14152a;--mute:#626580;--amber:#5b3df0;--rose:#d63a62;--line:#dfe1ee;--on:#fff;--hh:#0089a8;--glow:transparent;color-scheme:light}}
+:root{--bg:#0a0b10;--card:#14151f;--ink:#f3f4f8;--mute:#8b8fa8;--amber:#9a7dff;--rose:#ff5c8a;--line:#262839;--on:#0a0b10;--hh:#3de0ff;--glow:#3a2a8a66;--ok:#3ddc97;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f4f5fa;--card:#fff;--ink:#14152a;--mute:#626580;--amber:#5b3df0;--rose:#d63a62;--line:#dfe1ee;--on:#fff;--hh:#0089a8;--glow:transparent;--ok:#0a8f5a;color-scheme:light}}
 *{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:radial-gradient(120% 50% at 50% -10%,var(--glow),transparent 60%),var(--bg);color:var(--ink);font:400 16px/1.4 "Bricolage Grotesque",system-ui,sans-serif}
@@ -20,13 +20,13 @@ h1{font-size:44px;line-height:1;font-weight:800;margin:8px 0 4px;letter-spacing:
 .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:4px}
 .chip{white-space:nowrap}
 button:focus-visible,input:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-.card{background:var(--card);border-radius:18px;padding:16px;margin-bottom:12px;border:1px solid var(--line)}
+.card{background:var(--card);border-radius:18px;padding:18px;margin-bottom:16px;border:1px solid var(--line)}
 .top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;width:100%;background:none;border:0;color:inherit;font:inherit;text-align:left;padding:0;cursor:pointer}
 .name{font-size:21px;font-weight:800;letter-spacing:-.01em}
 .area{color:var(--mute);font-size:14px}
 .price{text-align:right;white-space:nowrap}
-.price b{font-size:22px;color:var(--amber)}
-.price s{display:block;color:var(--mute);font-size:13px}
+.price b{font-size:22px;color:var(--ok)}
+.price s{display:block;color:var(--rose);font-size:14px}
 .price .area{display:block}
 .meter{display:flex;gap:3px;margin:14px 0 8px}
 .meter i{flex:1;height:10px;border-radius:3px;background:var(--line)}
@@ -146,11 +146,11 @@ function list(){
     if(!show(b))return;
     var segs="";
     for(var k=0;k<10;k++){segs+='<i class="'+(k<Math.round(b.v/10)?(b.v>=85?"hot":"on"):"")+'"></i>'}
-    h+='<div class="card"><button class="top" data-i="'+i+'" aria-expanded="'+(open==i)+'"><span><span class="name">'+esc(b.n)+'</span><br><span class="area">'+esc(b.a)+'</span></span><span class="price"><s>'+kr(b.w)+'</s>'+(member?'<b>'+kr(Math.round(b.w*0.8/10)*10)+'</b><span class="area">meðlimaverð</span>':'<span class="area">stór bjór, fullt verð</span><span class="area">Meðlimir: '+kr(Math.round(b.w*0.8/10)*10)+'</span>')+'</span></button>'
+    h+='<div class="card"><button class="top" data-i="'+i+'" aria-expanded="'+(open==i)+'"><span><span class="name">'+esc(b.n)+'</span><br><span class="area">'+esc(b.a)+'</span></span><span class="price"><s>'+kr(b.w)+'</s>'+(member?'<b>'+kr(Math.round(b.w*0.8/10)*10)+'</b><span class="area">meðlimaverð</span>':'<span class="area">stór bjór, fullt verð</span><span class="area" style="color:var(--ok);font-weight:600">Meðlimir: '+kr(Math.round(b.w*0.8/10)*10)+'</span>')+'</span></button>'
     
-    +'<div class="facts"><span>'+Q[b.q]+'</span><span>Opið til '+(CL[b.n]||"01:00")+'</span><span>'+esc(b.m)+'</span>'+(b.s?'<span>Kostað</span>':'')+(b.hh>0?'<span class="hh">Happy hour í '+b.hh+' mín.</span>':'<span>Happy hour búið</span>')+'</div>';
+    +'<div class="facts"><span>'+Q[b.q]+'</span><span>Opið til '+(CL[b.n]||"01:00")+'</span>'+(b.s?'<span>Kostað</span>':'')+(b.hh>0?'<span class="hh">Happy hour í '+b.hh+' mín.</span>':'<span>Happy hour búið</span>')+'</div>';
     if(open==i){
-      h+='<div class="more"><p>'+esc(b.d)+'</p>'
+      h+='<div class="more"><p>'+esc(b.d)+'</p><p class="area">'+esc(b.m)+'</p>'
       +'<div class="row"><span>Röðin núna</span>'+Q.map(function(q,j){return '<button data-r="'+i+'" data-j="'+j+'">'+q+'</button>'}).join("")+'</div>'
       +(member?'<button class="cta" data-k="'+i+'" style="margin-bottom:8px">Sýna kort</button>':'')+'<button class="cta" data-t="'+i+'">Leigubíll héðan</button></div>'
     }
