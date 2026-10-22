@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!doctype html>
 <html lang="is">
 <head>
@@ -57,7 +56,7 @@ input{display:block;width:100%;margin-top:4px;font:inherit;color:var(--ink);back
   <h1>Í kvöld</h1>
   <p class="sub">Miðborg Reykjavíkur, föstudagur</p>
   <div class="card" style="border-color:var(--hh)"><b>Sýnishorn</b><p class="sub" style="margin:4px 0 0">Staðir og verð eru tilbúin dæmi. Engir alvöru afslættir og engin greiðsla.</p></div>
-  <div class="card"><b>Meðlimir fá 20% af kokteilum, bjór og vínglösum til kl. 22</b><p class="sub" style="margin:4px 0 10px">800 kr. á mánuði, 20 ára og eldri. Sýndu kortið á barnum, einu sinni á stað á dag. Meðlimir sjá engar auglýsingar.</p><div id="code" hidden style="position:fixed;inset:0;z-index:20;overflow:auto;padding:20px 16px;background:linear-gradient(180deg,#1a0b3d,#05050b 45%)"><div style="max-width:520px;margin:0 auto"><button onclick="closeCard()" style="font:inherit;font-weight:700;color:var(--amber);background:none;border:0;padding:8px 0;cursor:pointer">← Til baka</button><div style="border-radius:22px;padding:18px;margin-top:8px;color:#fff;background:linear-gradient(135deg,#3a2cf0,#8a2be2 60%,#d63a9a)"><div style="display:flex;justify-content:space-between;font-weight:700;font-size:14px"><span>● Meðlimur</span><span id="cv">00:00:00</span></div><div style="font-size:26px;font-weight:800;margin:26px 0 20px" id="cn">Allir þátttökustaðir</div><div style="font-size:30px;font-weight:800">gestur (sýnishorn)</div><div style="font-weight:700;margin:4px 0 14px">20% af kokteilum, bjór og vínglösum til kl. 22</div><div style="background:#2fa84f;border-radius:12px;padding:12px 14px"><div style="font-size:24px;font-weight:800">✓ Gildir núna</div><div style="font-size:14px;font-weight:700">til kl. 22</div></div></div><p class="sub" style="margin-top:14px">Opnaðu stað í listanum og ýttu á Sýna kort, þá birtist nafn staðarins á kortinu.</p></div></div><button class="cta" id="mb" onclick="toggleMember()">Gerast meðlimur</button><button class="cta" id="sk" hidden style="margin-top:8px" onclick="showCard('Allir þátttökustaðir')">Sýna kort</button></div>
+  <div class="card"><b>Meðlimir fá 20% af kokteilum, bjór og vínglösum til kl. 22</b><p class="sub" style="margin:4px 0 10px">800 kr. á mánuði, 20 ára og eldri. Sýndu kortið á barnum. Meðlimir sjá engar auglýsingar.</p><div id="code" hidden style="position:fixed;inset:0;z-index:20;overflow:auto;padding:20px 16px;background:linear-gradient(180deg,#1a0b3d,#05050b 45%)"><div style="max-width:520px;margin:0 auto"><button onclick="closeCard()" style="font:inherit;font-weight:700;color:var(--amber);background:none;border:0;padding:8px 0;cursor:pointer">← Til baka</button><div style="border-radius:22px;padding:18px;margin-top:8px;color:#fff;background:linear-gradient(135deg,#3a2cf0,#8a2be2 60%,#d63a9a)"><div style="display:flex;justify-content:space-between;font-weight:700;font-size:14px"><span>● Meðlimur</span><span id="cv">00:00:00</span></div><div style="font-size:26px;font-weight:800;margin:26px 0 20px" id="cn">Allir þátttökustaðir</div><div style="font-size:30px;font-weight:800">gestur (sýnishorn)</div><div style="font-weight:700;margin:4px 0 14px">20% af kokteilum, bjór og vínglösum til kl. 22</div><div style="background:#2fa84f;border-radius:12px;padding:12px 14px"><div style="font-size:24px;font-weight:800">✓ Gildir núna</div><div style="font-size:14px;font-weight:700">til kl. 22</div></div></div><p class="sub" style="margin-top:14px">Opnaðu stað í listanum og ýttu á Sýna kort, þá birtist nafn staðarins á kortinu.</p></div></div><button class="cta" id="mb" onclick="toggleMember()">Gerast meðlimur</button><button class="cta" id="sk" hidden style="margin-top:8px" onclick="showCard('Allir þátttökustaðir')">Sýna kort</button></div>
   <div class="tabs">
     <button class="tab" data-v="users" aria-pressed="true">Núna</button>
     <button class="tab" data-v="taxi" aria-pressed="false">Heim</button>
@@ -102,6 +101,7 @@ input{display:block;width:100%;margin-top:4px;font:inherit;color:var(--ink);back
       <label>Nafn á stað<input id="fName" value="Bar Nýi"></label>
       <label>Tilboð<input id="fDeal" value="Tveir fyrir einn á stórum bjór"></label>
       <label>Venjulegt verð á stórum bjór (kr.)<input id="fPrice" inputmode="numeric" value="1800"></label>
+      <label>Lokunartími í kvöld<input id="fClose" value="01:00"></label>
       <button class="cta" id="publish">Birta tilboð</button>
     </div>
   </section>
@@ -120,13 +120,14 @@ var bars=[
 {n:"Neonbarinn",a:"Tryggvagata",p:1150,w:1900,hh:0,q:2,v:88,m:"Klúbbakvöld",d:"Gestalisti opinn til kl. 23."},
 {n:"Stúdíó 12",a:"Vesturgata",p:1100,w:1800,hh:65,q:1,v:70,m:"Karókí",d:"Karókí öll föstudagskvöld."}
 ];
+var CL={"Kjallarinn":"04:30","Gulltunnan":"01:00","Skúrinn":"23:30","Plötuspilarinn":"04:30","Norðurljós Lounge":"01:00","Hornið":"01:00","Kaffi Kvöld":"00:00","Bryggjan":"23:00","Neonbarinn":"04:30","Stúdíó 12":"03:00"};
 var Q=["Engin röð","Stutt röð","Löng röð"],V=["Rólegt","Gott","Fullt"];
 var filter="all",open=-1,when="Núna",member=false;
 var F=[["all","Allt"],["hh","Happy hour"],["noq","Engin röð"],["live","Tónlist"]];
 var cdT=null;
 function showCard(n){document.getElementById("cn").textContent=n;document.getElementById("code").hidden=false;var tick=function(){var d=new Date(),p=function(x){return(x<10?"0":"")+x};document.getElementById("cv").textContent=p(d.getHours())+":"+p(d.getMinutes())+":"+p(d.getSeconds())};clearInterval(cdT);tick();cdT=setInterval(tick,1000)}
 function closeCard(){clearInterval(cdT);document.getElementById("code").hidden=true}
-function toggleMember(){var m=document.getElementById("mb");var on=m.dataset.on!="1";m.dataset.on=on?"1":"0";m.textContent=on?"Þú ert meðlimur (sýnishorn). Smelltu til að hætta":"Gerast meðlimur";document.getElementById("sp").hidden=on;member=on;clearInterval(cdT);closeCard();document.getElementById("sk").hidden=!on;list();toast(on?"Engar auglýsingar fyrir meðlimi":"Auglýsingar sýnilegar")}
+function toggleMember(){var m=document.getElementById("mb");var on=m.dataset.on!="1";m.dataset.on=on?"1":"0";m.textContent=on?"Þú ert meðlimur ✓":"Gerast meðlimur";document.getElementById("sp").hidden=on;member=on;clearInterval(cdT);closeCard();document.getElementById("sk").hidden=!on;list();toast(on?"Engar auglýsingar fyrir meðlimi":"Auglýsingar sýnilegar")}
 function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
 function kr(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,".")+" kr."}
 function toast(t){var e=document.getElementById("toast");e.textContent=t;e.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("show")},1800)}
@@ -147,7 +148,7 @@ function list(){
     for(var k=0;k<10;k++){segs+='<i class="'+(k<Math.round(b.v/10)?(b.v>=85?"hot":"on"):"")+'"></i>'}
     h+='<div class="card"><button class="top" data-i="'+i+'" aria-expanded="'+(open==i)+'"><span><span class="name">'+esc(b.n)+'</span><br><span class="area">'+esc(b.a)+'</span></span><span class="price"><s>'+kr(b.w)+'</s>'+(member?'<b>'+kr(Math.round(b.w*0.8/10)*10)+'</b><span class="area">meðlimaverð</span>':'<span class="area">stór bjór, fullt verð</span><span class="area">Meðlimir: '+kr(Math.round(b.w*0.8/10)*10)+'</span>')+'</span></button>'
     
-    +'<div class="facts"><span>'+Q[b.q]+'</span><span>'+esc(b.m)+'</span><span class="hh">Meðlimir −20% til kl. 22</span><span>Kort aðeins fyrir meðlimi</span>'+(b.s?'<span>Kostað</span>':'')+(b.hh>0?'<span class="hh">Happy hour í '+b.hh+' mín.</span>':'<span>Happy hour búið</span>')+'</div>';
+    +'<div class="facts"><span>'+Q[b.q]+'</span><span>Opið til '+(CL[b.n]||"01:00")+'</span><span>'+esc(b.m)+'</span>'+(b.s?'<span>Kostað</span>':'')+(b.hh>0?'<span class="hh">Happy hour í '+b.hh+' mín.</span>':'<span>Happy hour búið</span>')+'</div>';
     if(open==i){
       h+='<div class="more"><p>'+esc(b.d)+'</p>'
       +'<div class="row"><span>Röðin núna</span>'+Q.map(function(q,j){return '<button data-r="'+i+'" data-j="'+j+'">'+q+'</button>'}).join("")+'</div>'
@@ -175,6 +176,7 @@ document.addEventListener("click",function(e){
     var n=document.getElementById("fName").value.trim()||"Nýr staður";
     var d=document.getElementById("fDeal").value.trim()||"Tilboð í kvöld";
     var p=parseInt(document.getElementById("fPrice").value,10)||1800;
+    CL[n]=document.getElementById("fClose").value.trim()||"01:00";
     bars.unshift({n:n,a:"Nýskráð",p:p,w:p,hh:120,q:0,v:40,m:"Nýtt",d:d});
     open=0;filter="all";chips();list();
     document.querySelector('.tab[data-v="users"]').click();
@@ -185,5 +187,3 @@ chips();list();
 </script>
 </body>
 </html>
-
-</body></html>
